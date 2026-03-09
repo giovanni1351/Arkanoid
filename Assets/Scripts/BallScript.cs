@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallScript : MonoBehaviour
 {
@@ -61,6 +62,21 @@ public class BallScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Scene scene = SceneManager.GetActiveScene();
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("Brick");
+        print(gos.Length);
+        if (gos.Length == 0)
+        {
+            if (scene.name == "Cena_1")
+            {
+                SceneManager.LoadScene("Cena_2");
+            }
+            else if (scene.name == "Cena_2")
+            {
+                SceneManager.LoadScene("Cena_3");
+            }
+        }
         
+
     }
 }
